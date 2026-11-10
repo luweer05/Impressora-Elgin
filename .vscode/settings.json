@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Projeto POO EM/libs Java/jna-5.15.0.jar"
+    ]
+}
