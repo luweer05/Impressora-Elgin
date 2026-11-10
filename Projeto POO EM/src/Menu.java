@@ -1,18 +1,9 @@
 public class Menu {
-  menuImpressora(){
-    while(true){
-        menuImpresso();
-        System.out.println("Digite a opção desejada:\n");
-        int opc = input.nextInt();
 
-        switch (opc){
-            case 1:
-                impressora.configurarImpressora();
-                break;
-            case 2:
-                impressora.abrirConexao();
-                break;
-        }
-    }
+  void menuImpressora(){
+     System.out.println("---Menu---");
+     System.out.println("1 - Configurar conexão");
+     System.out.println("2 - Abrir conexão");
+     System.out.println("3 - Impressao codigo de barras");
   }
 }
