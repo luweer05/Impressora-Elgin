@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Impressora {
 
  static boolean conexaoAberta = false;
@@ -10,7 +9,7 @@ public class Impressora {
  static Scanner input = new Scanner(System.in); 
 
  void configurarImpressora(){
-      System.out.println("Digite o tipo de conexão:");
+    System.out.println("Digite o tipo de conexão:");
     System.out.println("1 - USB");
     System.out.println("2 - RS232");
     System.out.println("3 - TCP/IP");
@@ -29,17 +28,36 @@ public class Impressora {
 
     System.out.println("Dados armazenados com sucesso!");
 }
- 
+
  void abrirConexao(){
     if (conexaoAberta == false){
     int ret = ImpressoraDLL.INSTANCE.AbreConexaoImpressora(tipo, modelo, conexao, parametro);
-   if(ret == 0){
-    System.out.println("Comunicação Bem sucedida");
-   }else{
-    System.out.println("Erro ao abrir conexao. Retorno " + ret);
+   
+    if(ret == 0){
+        conexaoAberta = true;
+        System.out.println("Comunicação bem sucedida");
+        }else{
+        System.out.println("Erro ao abrir conexão. Retorno " + ret);
+    }
+        }   
+    else{
+     System.out.println("Já existe uma comunicação em aberto ");
 }
- }else{
-    System.out.println("Ja existe uma cominucação em aberto ");
 }
+
+void impressaoCodigoBarras() {
+    if (conexaoAberta == true) {
+        int ret = ImpressoraDLL.INSTANCE.ImpressaoCodigoBarras(tipo, modelo, conexao, parametro);
+
+        if (ret == 0) {
+            System.out.println("Comunicou com sucesso!");
+        } else {
+            System.out.println("Erro ao abrir conexao. Retorno " + ret);
+        }
+    } 
+    else {
+        System.out.println("Já existe uma comunicação em aberto ");
+    }
 }
+
 }

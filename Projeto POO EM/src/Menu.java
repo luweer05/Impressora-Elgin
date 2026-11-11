@@ -1,5 +1,4 @@
 public class Menu {
-
    Impressora impressora = new Impressora();
 
   void menuImpressora(){
@@ -11,12 +10,9 @@ public class Menu {
         int opcao = 0;
 
         while (opcao != 4) {
-
-
             opcao = Impressora.input.nextInt();
 
             switch (opcao) {
-
                 case 1:
                     impressora.configurarImpressora();
                     break;
@@ -26,7 +22,7 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.println("Função de impressão de código de barras ainda não implementada.");
+                    impressora.impressaoCodigoBarras();
                     break;
 
                 case 4:
