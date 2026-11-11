@@ -35,7 +35,47 @@ public class Menu {
                 case 4:
                     impressora.impressaoTexto();
                         break;
-               
+                case 5:
+                    impressora.impressaoQRCode();
+                        break;  
+                case 6:
+                    impressora.impressaoCodigoBarras();
+                        break;
+                case 7:
+                    impressora.imprimeXMLSAT();
+                        break;
+                case 8:
+                    impressora.imprimeXMLCancelamentoSAT();
+                        break;
+                case 9:
+                    impressora.abreGaveta();
+                        break;
+                case 10:
+                    impressora.sinalSonoro();
+                        break;
+
+                        
+                    System.out.println("Opção inválida!");  
+                    if (impressora.conexaoAberta) {
+                        switch (opcao) {
+                            case 4: impressora.impressaoTexto(); break;
+                            case 5: impressora.impressaoQRCode(); break;
+                            case 6: impressora.impressaoCodigoBarras(); break;
+                            case 7: impressora.imprimeXMLSAT(); break;
+                            case 8: impressora.imprimeXMLCancelamentoSAT(); break;
+                            case 9: impressora.abreGaveta(); break;
+                            case 10: impressora.sinalSonoro(); break;
+                        }
+                    } else {
+                        System.out.println("Conexão fechada. Abra a conexão antes.");
+                    }
+                    break;
+                case 11:
+                    System.out.println("Programa encerrado!");
+                        break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
         }
     }
 }
