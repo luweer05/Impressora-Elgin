@@ -10,18 +10,26 @@ public class Impressora {
  static Scanner input = new Scanner(System.in); 
 
  void configurarImpressora(){
-        System.out.println("Digite o modelo da impressora:");
-        modelo = input.nextLine();
+      System.out.println("Digite o tipo de conexão:");
+    System.out.println("1 - USB");
+    System.out.println("2 - RS232");
+    System.out.println("3 - TCP/IP");
 
-        System.out.println("Digite o tipo de conexão:");
-        conexao = input.nextLine();
+    tipo = input.nextInt();
+    input.nextLine();
 
-        System.out.println("Digite o parametro:");
-        parametro = input.nextInt();
+    System.out.println("Digite o modelo da impressora:");
+    modelo = input.nextLine();
 
-        System.out.println("Dados armazenados com sucesso!");
- }
+    System.out.println("Digite a conexão:");
+    conexao = input.nextLine();
 
+    System.out.println("Digite o parametro:");
+    parametro = input.nextInt();
+
+    System.out.println("Dados armazenados com sucesso!");
+}
+ 
  void abrirConexao(){
     if (conexaoAberta == false){
     int ret = ImpressoraDLL.INSTANCE.AbreConexaoImpressora(tipo, modelo, conexao, parametro);
