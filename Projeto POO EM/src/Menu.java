@@ -2,36 +2,40 @@ public class Menu {
    Impressora impressora = new Impressora();
 
   void menuImpressora(){
-     System.out.println("---Menu---");
-     System.out.println("1 - Configurar conexão");
-     System.out.println("2 - Abrir conexão");
-     System.out.println("3 - Impressao codigo de barras");
+        System.out.println("1 - Configurar conexão");
+        System.out.println("2 - Abrir conexão");
+        System.out.println("3 - Fechar conexão");
+        System.out.println("4 - Imprimir texto");
+        System.out.println("5 - Imprimir QR Code");
+        System.out.println("6 - Imprimir código de barras");
+        System.out.println("7 - Imprimir XML SAT");
+        System.out.println("8 - Imprimir XML de cancelamento SAT");
+        System.out.println("9 - Abrir gaveta");
+        System.out.println("10 - Sinal sonoro (bip)");
+        System.out.println("11 - Sair");
 
         int opcao = 0;
 
-        while (opcao != 4) {
+       (opcao != 11) {
+            menuImpresso();
+            System.out.println("Digite a opcao desejada: ");
+            
             opcao = Impressora.input.nextInt();
 
-            switch (opcao) {
+           switch (opcao) {
                 case 1:
                     impressora.configurarImpressora();
-                    break;
-
+                        break;
                 case 2:
                     impressora.abrirConexao();
-                    break;
-
+                        break;
                 case 3:
-                    impressora.impressaoCodigoBarras();
-                    break;
-
+                    impressora.fecharConexao();
+                        break;
                 case 4:
-                    System.out.println("Programa encerrado!");
-                    break;
-
-                default:
-                    System.out.println("Opção inválida!");
-            }
+                    impressora.impressaoTexto();
+                        break;
+               
         }
     }
 }
