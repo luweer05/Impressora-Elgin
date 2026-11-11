@@ -16,63 +16,60 @@ public class Menu {
 
         int opcao = 0;
 
-       (opcao != 11) {
-            menuImpresso();
+      while (opcao != 11) {
+           
             System.out.println("Digite a opcao desejada: ");
             
+            
             opcao = Impressora.input.nextInt();
+            Impressora.input.nextLine();
 
-           switch (opcao) {
+       switch (opcao) {
+
                 case 1:
                     impressora.configurarImpressora();
-                        break;
+                    break;
+
                 case 2:
                     impressora.abrirConexao();
-                        break;
+                    break;
+
                 case 3:
                     impressora.fecharConexao();
-                        break;
+                    break;
+
                 case 4:
                     impressora.impressaoTexto();
-                        break;
+                    break;
+
                 case 5:
                     impressora.impressaoQRCode();
-                        break;  
+                    break;
+
                 case 6:
                     impressora.impressaoCodigoBarras();
-                        break;
+                    break;
+
                 case 7:
                     impressora.imprimeXMLSAT();
-                        break;
+                    break;
+
                 case 8:
                     impressora.imprimeXMLCancelamentoSAT();
-                        break;
+                    break;
+
                 case 9:
                     impressora.abreGaveta();
-                        break;
+                    break;
+
                 case 10:
                     impressora.sinalSonoro();
-                        break;
-
-                        
-                    System.out.println("Opção inválida!");  
-                    if (impressora.conexaoAberta) {
-                        switch (opcao) {
-                            case 4: impressora.impressaoTexto(); break;
-                            case 5: impressora.impressaoQRCode(); break;
-                            case 6: impressora.impressaoCodigoBarras(); break;
-                            case 7: impressora.imprimeXMLSAT(); break;
-                            case 8: impressora.imprimeXMLCancelamentoSAT(); break;
-                            case 9: impressora.abreGaveta(); break;
-                            case 10: impressora.sinalSonoro(); break;
-                        }
-                    } else {
-                        System.out.println("Conexão fechada. Abra a conexão antes.");
-                    }
                     break;
+
                 case 11:
                     System.out.println("Programa encerrado!");
-                        break;
+                    break;
+
                 default:
                     System.out.println("Opção inválida!");
             }

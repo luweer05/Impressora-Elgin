@@ -5,7 +5,7 @@ public class Usuario {
     String senhaCorreta = "1234";
 
     void fazerLogin() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = Impressora.input;
         int tentativas = 3;
         boolean logado = false;
 

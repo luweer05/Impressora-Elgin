@@ -6,6 +6,7 @@ public class Impressora {
  static String modelo;
  static String conexao;
  static int parametro;
+ static String xml = "path=SAT.xml";
  static Scanner input = new Scanner(System.in); 
 
  void configurarImpressora(){
@@ -60,82 +61,102 @@ void fecharConexao() {
         System.out.println("Não existe uma comunicação em aberto");
     }
 }
-
 void impressaoCodigoBarras() {
+
     if (conexaoAberta == true) {
-        int ret = ImpressoraDLL.INSTANCE.ImpressaoCodigoBarras(tipo, modelo, conexao, parametro);
+
+        System.out.println("Digite os dados do código de barras:");
+        String dados = input.nextLine();
+
+        int ret = ImpressoraDLL.INSTANCE.ImpressaoCodigoBarras(
+            tipo, dados, 100, 2, 1
+        );
 
         if (ret == 0) {
-            System.out.println("Codigo de barras impresso com sucesso!");
-            } else {
-                System.out.println("Erro ao imprimir codigo de barras. Retorno " + ret);
-            }
-        } 
-        else {
-            System.out.println("Não existe uma comunicação em aberto");
+            System.out.println("Código de barras impresso com sucesso!");
+        } else {
+            System.out.println("Erro ao imprimir código de barras. Retorno " + ret);
         }
+
+    } else {
+        System.out.println("Não existe uma comunicação em aberto.");
+    }
 }
 
 void impressaoTexto() {
 
     if (conexaoAberta == true) {
-        input.nextLine();
 
         System.out.println("Digite o texto para imprimir:");
         String dados = input.nextLine();
-        int ret = ImpressoraDLL.INSTANCE.ImpressaoTexto(tipo, modelo, conexao, parametro, dados);
+
+        int ret = ImpressoraDLL.INSTANCE.ImpressaoTexto(
+            dados, 0, 0, 0
+        );
 
         if (ret >= 0) {
             System.out.println("Texto enviado com sucesso!");
         } else {
             System.out.println("Erro ao imprimir texto. Retorno " + ret);
         }
-    } 
-    else {
+
+    } else {
         System.out.println("Não existe uma comunicação em aberto. Abra a conexão antes.");
     }
 }
-
 void impressaoQRCode() {
+
     if (conexaoAberta == true) {
-        int ret = ImpressoraDLL.INSTANCE.ImpressaoQRCode();
-        
+
+        System.out.println("Digite o conteúdo do QR Code:");
+        String dados = input.nextLine();
+
+        int ret = ImpressoraDLL.INSTANCE.ImpressaoQRCode(
+            dados, 6, 2
+        );
+
         if (ret == 0) {
             System.out.println("QR Code impresso com sucesso!");
         } else {
             System.out.println("Erro ao imprimir QR Code. Retorno " + ret);
         }
-    } 
-    else {
-        System.out.println("Não existe uma comunicação em aberto");
+
+    } else {
+        System.out.println("Não existe uma comunicação em aberto.");
     }
 }
 
 void sinalSonoro() {
+
     if (conexaoAberta == true) {
-    int retorno = ImpressoraDLL.INSTANCE.SinalSonoro(2, 50, 5);        
+
+        int ret = ImpressoraDLL.INSTANCE.SinalSonoro(2, 50, 5);
+
         if (ret == 0) {
             System.out.println("Bip executado com sucesso!");
         } else {
             System.out.println("Erro no sinal sonoro. Retorno " + ret);
         }
+
     } else {
-        System.out.println("Não existe uma comunicação em aberto");
+        System.out.println("Não existe uma comunicação em aberto.");
     }
 }
 
 void abreGaveta() {
+
     if (conexaoAberta == true) {
-        int ret = ImpressoraDLL.INSTANCE.AbreGaveta();
-        
+
+        int ret = ImpressoraDLL.INSTANCE.AbreGaveta(0, 5, 5);
+
         if (ret == 0) {
             System.out.println("Gaveta aberta com sucesso!");
         } else {
             System.out.println("Erro ao abrir gaveta. Retorno " + ret);
         }
-    } 
-    else {
-        System.out.println("Não existe uma comunicação em aberto");
+
+    } else {
+        System.out.println("Não existe uma comunicação em aberto.");
     }
 }
 
